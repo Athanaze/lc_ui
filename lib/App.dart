@@ -1,7 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:lc_ui/Theme.dart';
 import 'package:lc_ui/lc_ui.dart';
 
 const MAX_WIDTH = 1000.0;
@@ -13,20 +12,28 @@ class LCApp extends StatelessWidget {
   final double maxWidth;
   final double appPadding;
 
-  const LCApp({
-    super.key,
-    required this.children,
-    required this.title,
-    this.maxWidth = MAX_WIDTH,
-    this.appPadding = APP_PADDING,
-  });
+  final Icon? backIcon;
+  final Function()? onBackPressed;
+
+  const LCApp(
+      {super.key,
+      required this.children,
+      required this.title,
+      this.maxWidth = MAX_WIDTH,
+      this.appPadding = APP_PADDING,
+      this.backIcon,
+      this.onBackPressed});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: AppTheme.lightTheme,
       home: Scaffold(
-        appBar: LCBar(title: title),
+        appBar: LCBar(
+          title: title,
+          backIcon: backIcon,
+          onBackPressed: onBackPressed,
+        ),
         body: Center(
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: maxWidth),

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class LCBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  final IconData backIcon;
+  final Icon? backIcon;
   final VoidCallback? onBackPressed;
   final List<Widget>? actions;
 
   const LCBar(
       {super.key,
       required this.title,
-      this.backIcon = Icons.arrow_back,
+      this.backIcon,
       this.onBackPressed,
       this.actions});
 
@@ -17,7 +17,7 @@ class LCBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: IconButton(
-        icon: Icon(backIcon),
+        icon: backIcon ?? const Icon(Icons.arrow_back),
         onPressed: onBackPressed ?? () => Navigator.of(context).pop(),
         color: Colors.white,
       ),
