@@ -13,6 +13,6 @@ pubspec.yaml
 dependencies:
   lc_ui:
     git:
-      url: https://github.com/Athanaze/lc_ui/tree/master
+      url: https://github.com/Athanaze/lc_ui.git
       ref: master  # or use a specific tag or commit hash
 ```
