@@ -14,6 +14,7 @@ class LCApp extends StatelessWidget {
 
   final Icon? backIcon;
   final Function()? onBackPressed;
+  final List<Widget>? actions;
 
   const LCApp(
       {super.key,
@@ -22,7 +23,8 @@ class LCApp extends StatelessWidget {
       this.maxWidth = MAX_WIDTH,
       this.appPadding = APP_PADDING,
       this.backIcon,
-      this.onBackPressed});
+      this.onBackPressed,
+      this.actions});
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +32,10 @@ class LCApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       home: Scaffold(
         appBar: LCBar(
-          title: title,
-          backIcon: backIcon,
-          onBackPressed: onBackPressed,
-        ),
+            title: title,
+            backIcon: backIcon,
+            onBackPressed: onBackPressed,
+            actions: actions),
         body: Center(
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: maxWidth),
