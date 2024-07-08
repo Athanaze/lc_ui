@@ -24,40 +24,43 @@ class _LCBaseWideButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(BUTTON_PADDING),
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(vertical: BUTTON_PADDING),
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            borderRadius: BorderRadius.circular(BUTTON_RADIUS),
-            border: hasBorder
-                ? Border.all(
-              color: textColor,
-              width: BUTTON_BORDER_WIDTH,
-            )
-                : null,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                text.toUpperCase(),
-                style: TextStyle(
-                  color: textColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: BUTTON_FONT_SIZE,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: Padding(
+        padding: const EdgeInsets.all(BUTTON_PADDING),
+        child: GestureDetector(
+          onTap: onTap,
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: BUTTON_PADDING),
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: BorderRadius.circular(BUTTON_RADIUS),
+              border: hasBorder
+                  ? Border.all(
+                      color: textColor,
+                      width: BUTTON_BORDER_WIDTH,
+                    )
+                  : null,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  text.toUpperCase(),
+                  style: TextStyle(
+                    color: textColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: BUTTON_FONT_SIZE,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              if (iconData != null) ...[
-                const SizedBox(width: BUTTON_FONT_SIZE/2),
-                Icon(iconData, size: BUTTON_FONT_SIZE, color: textColor),
+                if (iconData != null) ...[
+                  const SizedBox(width: BUTTON_FONT_SIZE / 2),
+                  Icon(iconData, size: BUTTON_FONT_SIZE, color: textColor),
+                ],
               ],
-            ],
+            ),
           ),
         ),
       ),

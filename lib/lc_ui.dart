@@ -5,3 +5,4 @@ export 'Spacer.dart';
 export 'TextField.dart';
 export 'Theme.dart';
 export 'WideButton.dart';
+export 'App.dart';

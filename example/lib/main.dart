@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:lc_ui/Text.dart';
 import 'package:lc_ui/lc_ui.dart';
 
 void main() {
@@ -7,33 +7,19 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('UI Kit Demo')),
-        body: const UIKitDemo(),
-      ),
-    );
-  }
-}
-
-class UIKitDemo extends StatelessWidget {
-  const UIKitDemo({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
+    return LCApp(
+      title: 'UI Kit Demo',
       children: [
-        // Add your UI kit widgets here
-        LCWideButton(onTap: () {}, text: 'Custom Button'),
+        const LCHeaderLarge("Large header title"),
+        LCWideButton(text: 'Custom Button', onTap: () {}),
         const LCSpacer(),
         LCSecondaryWideButton(onTap: () {}, text: 'Custom Button'),
-
         const LCSpacer(),
-        const Text('BUDDY'),
+        const LCheaderMedium('Buddy'),
         const LCTextField(
           hintText: "John Doe",
           autofocus: true,
@@ -44,11 +30,10 @@ class UIKitDemo extends StatelessWidget {
         const LCTextField(
           hintText: "Phone number",
         ),
+        const LCHeaderSmall('Small header'),
         const LCSpacer(),
         LCWideButton(text: "SAVE", onTap: () {}),
-
-        // Add more widgets as needed
-      ],
+      ], // Optional: You can customize the title
     );
   }
 }
