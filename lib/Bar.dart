@@ -4,13 +4,14 @@ class LCBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final IconData backIcon;
   final VoidCallback? onBackPressed;
+  final List<Widget>? actions;
 
-  const LCBar({
-    super.key,
-    required this.title,
-    this.backIcon = Icons.arrow_back,
-    this.onBackPressed,
-  });
+  const LCBar(
+      {super.key,
+      required this.title,
+      this.backIcon = Icons.arrow_back,
+      this.onBackPressed,
+      this.actions});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,9 @@ class LCBar extends StatelessWidget implements PreferredSizeWidget {
         onPressed: onBackPressed ?? () => Navigator.of(context).pop(),
         color: Colors.white,
       ),
-      title: Text(title.toUpperCase(), style: const TextStyle(color: Colors.white)),
+      title: Text(title.toUpperCase(),
+          style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+      actions: actions,
     );
   }
 

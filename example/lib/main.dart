@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LCApp(
-      title: 'UI Kit Demo',
+      title: 'Ui kit demo',
       children: [
         const LCHeaderLarge("Large header title"),
         LCWideButton(text: 'Custom Button', onTap: () {}),

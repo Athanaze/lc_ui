@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:lc_ui/Theme.dart';
+import 'package:lc_ui/lc_ui.dart';
 
 const MAX_WIDTH = 1000.0;
 const APP_PADDING = 16.0;
@@ -25,7 +26,7 @@ class LCApp extends StatelessWidget {
     return MaterialApp(
       theme: AppTheme.lightTheme,
       home: Scaffold(
-        appBar: AppBar(title: Text(title)),
+        appBar: LCBar(title: title),
         body: Center(
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: maxWidth),
