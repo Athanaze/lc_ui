@@ -11,8 +11,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: AppTheme.lightTheme,
+      home: const MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return LCApp(
       title: 'Ui kit demo',
+      actions: [Text("21342142314234")],
       children: [
         const LCHeaderLarge("Large header title"),
         LCWideButton(text: 'Custom Button', onTap: () {}),
