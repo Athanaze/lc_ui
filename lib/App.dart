@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lc_ui/Bar.dart';
 
-const MAX_WIDTH = 1000.0;
-const APP_PADDING = 16.0;
+class AppStyles {
+  static const double maxWidth = 1000.0;
+  static const double appPadding = 16.0;
+}
 
 class LCApp extends StatelessWidget {
   final List<Widget> children;
@@ -18,8 +20,8 @@ class LCApp extends StatelessWidget {
     super.key,
     required this.children,
     required this.title,
-    this.maxWidth = MAX_WIDTH,
-    this.appPadding = APP_PADDING,
+    this.maxWidth = AppStyles.maxWidth,
+    this.appPadding = AppStyles.appPadding,
     this.backIcon,
     this.onBackPressed,
     this.actions,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// A custom text field widget with optional password visibility toggle.
 class LCTextField extends StatefulWidget {
   final String hintText;
   final bool isPassword;
@@ -7,14 +8,16 @@ class LCTextField extends StatefulWidget {
   final ValueChanged<String>? onChanged;
   final bool? autofocus;
 
-  const LCTextField({
-    super.key,
-    required this.hintText,
-    this.isPassword = false,
-    this.controller,
-    this.onChanged,
-    this.autofocus
-  });
+  /// Creates an [LCTextField].
+  ///
+  /// [hintText] is required. [controller] is for the controller of the material text field.
+  const LCTextField(
+      {super.key,
+      required this.hintText,
+      this.isPassword = false,
+      this.controller,
+      this.onChanged,
+      this.autofocus});
 
   @override
   LCTextFieldState createState() => LCTextFieldState();
@@ -38,15 +41,15 @@ class LCTextFieldState extends State<LCTextField> {
         ),
         suffixIcon: widget.isPassword
             ? IconButton(
-          icon: Icon(
-            _obscureText ? Icons.visibility : Icons.visibility_off,
-          ),
-          onPressed: () {
-            setState(() {
-              _obscureText = !_obscureText;
-            });
-          },
-        )
+                icon: Icon(
+                  _obscureText ? Icons.visibility : Icons.visibility_off,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
+              )
             : null,
       ),
     );

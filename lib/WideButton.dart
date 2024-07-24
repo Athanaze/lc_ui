@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
-const BUTTON_PADDING = 16.0;
-const BUTTON_RADIUS = 8.0;
-const BUTTON_FONT_SIZE = 16.0;
-const BUTTON_BORDER_WIDTH = 1.0;
+/// Defines common styles for buttons
+class ButtonStyles {
+  static const padding = 16.0;
+  static const radius = 8.0;
+  static const fontSize = 16.0;
+  static const borderWidth = 1.0;
+}
 
+/// Base class for wide buttons
 class _LCBaseWideButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
@@ -27,19 +31,19 @@ class _LCBaseWideButton extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: Padding(
-        padding: const EdgeInsets.all(BUTTON_PADDING),
+        padding: const EdgeInsets.all(ButtonStyles.padding),
         child: GestureDetector(
           onTap: onTap,
           child: Container(
             width: double.infinity,
-            padding: const EdgeInsets.symmetric(vertical: BUTTON_PADDING),
+            padding: const EdgeInsets.symmetric(vertical: ButtonStyles.padding),
             decoration: BoxDecoration(
               color: backgroundColor,
-              borderRadius: BorderRadius.circular(BUTTON_RADIUS),
+              borderRadius: BorderRadius.circular(ButtonStyles.radius),
               border: hasBorder
                   ? Border.all(
                       color: textColor,
-                      width: BUTTON_BORDER_WIDTH,
+                      width: ButtonStyles.borderWidth,
                     )
                   : null,
             ),
@@ -51,13 +55,13 @@ class _LCBaseWideButton extends StatelessWidget {
                   style: TextStyle(
                     color: textColor,
                     fontWeight: FontWeight.bold,
-                    fontSize: BUTTON_FONT_SIZE,
+                    fontSize: ButtonStyles.fontSize,
                   ),
                   textAlign: TextAlign.center,
                 ),
                 if (iconData != null) ...[
-                  const SizedBox(width: BUTTON_FONT_SIZE / 2),
-                  Icon(iconData, size: BUTTON_FONT_SIZE, color: textColor),
+                  const SizedBox(width: ButtonStyles.fontSize / 2),
+                  Icon(iconData, size: ButtonStyles.fontSize, color: textColor),
                 ],
               ],
             ),
@@ -68,6 +72,7 @@ class _LCBaseWideButton extends StatelessWidget {
   }
 }
 
+/// Primary wide button with black background and white text
 class LCWideButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
@@ -92,6 +97,7 @@ class LCWideButton extends StatelessWidget {
   }
 }
 
+/// Secondary wide button with white background, black text, and border
 class LCSecondaryWideButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;

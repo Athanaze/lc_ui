@@ -4,6 +4,7 @@
 
 - Flatter look than Material design (limited use of shadows, no splash animations on clicks, etc...)
 - Sane defaults
+- Native feel : the text is selectable by default on web 
 
 ## Usage
 
