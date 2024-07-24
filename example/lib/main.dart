@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lc_ui/ChevronCard.dart';
 import 'package:lc_ui/IconButton.dart';
 import 'package:lc_ui/Text.dart';
 import 'package:lc_ui/TextButton.dart';
@@ -74,6 +75,20 @@ class MyHomePage extends StatelessWidget {
                 ),
               );
             }),
+        const LCSpacer(),
+        LCChevronCard(
+          title: "Title",
+          subtitle: "Subtitle",
+          onTap: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Chevron card tapped!'),
+                duration: Duration(seconds: 2),
+              ),
+            );
+          },
+          backgroundColor: Colors.white,
+        ),
       ],
     );
   }
