@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
+      textSelectionTheme: const TextSelectionThemeData(
+        cursorColor: Colors.black,
+        selectionColor: Color.fromARGB(255, 219, 219, 219),
+        selectionHandleColor: Colors.black,
+      ),
       primaryColor: Colors.white,
       fontFamily: 'Roboto',
       scaffoldBackgroundColor: Colors.white,
