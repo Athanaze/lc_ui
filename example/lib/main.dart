@@ -56,6 +56,7 @@ class MyHomePage extends StatelessWidget {
               text: "text button",
               onTap: () {},
             ),
+            LCText("LC Text content"),
           ],
         ),
         const LCSpacer(),

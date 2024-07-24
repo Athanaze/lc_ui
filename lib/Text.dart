@@ -57,3 +57,22 @@ class LCHeaderSmall extends StatelessWidget {
     );
   }
 }
+
+/// Regular text with adaptive text selection.
+/// Ensures consistent appearance across platforms.
+class LCText extends StatelessWidget {
+  /// Text content.
+  final String text;
+
+  /// Creates a regular text.
+  /// [text] is required for content display.
+  const LCText(this.text, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return LCSelectable(
+      text: text,
+      style: const TextStyle(fontSize: 14),
+    );
+  }
+}
