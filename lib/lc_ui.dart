@@ -9,3 +9,4 @@ export 'App.dart';
 export 'Text.dart';
 export 'Selectable.dart';
 export 'TextButton.dart';
+export 'IconButton.dart';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lc_ui/IconButton.dart';
 import 'package:lc_ui/Text.dart';
 import 'package:lc_ui/TextButton.dart';
 import 'package:lc_ui/lc_ui.dart';
@@ -61,7 +62,19 @@ class MyHomePage extends StatelessWidget {
         ),
         const LCSpacer(),
         LCWideButton(text: "SAVE", onTap: () {}),
-      ], // Optional: You can customize the title
+        const LCSpacer(),
+        LCIconButton(
+            icon: const Icon(Icons.add),
+            tooltip: "This is a tooltip",
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Added successfully!'),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+            }),
+      ],
     );
   }
 }
