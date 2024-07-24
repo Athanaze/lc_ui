@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:lc_ui/ButtonBorder.dart';
 
 /// Defines common styles for buttons
 class ButtonStyles {
   static const padding = 16.0;
   static const radius = 8.0;
   static const fontSize = 16.0;
-  static const borderWidth = 1.0;
 }
 
 /// Base class for wide buttons
@@ -40,12 +40,7 @@ class _LCBaseWideButton extends StatelessWidget {
             decoration: BoxDecoration(
               color: backgroundColor,
               borderRadius: BorderRadius.circular(ButtonStyles.radius),
-              border: hasBorder
-                  ? Border.all(
-                      color: textColor,
-                      width: ButtonStyles.borderWidth,
-                    )
-                  : null,
+              border: hasBorder ? LCButtonBorder() : null,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

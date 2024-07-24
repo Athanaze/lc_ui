@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lc_ui/Text.dart';
+import 'package:lc_ui/TextButton.dart';
 import 'package:lc_ui/lc_ui.dart';
 
 void main() {
@@ -43,7 +44,20 @@ class MyHomePage extends StatelessWidget {
         const LCTextField(
           hintText: "Phone number",
         ),
-        const LCHeaderSmall('Small header'),
+        Row(
+          children: [
+            const LCHeaderSmall('Small header'),
+            LCTextButton(
+              text: "Button with border",
+              onTap: () {},
+              border: true,
+            ),
+            LCTextButton(
+              text: "text button",
+              onTap: () {},
+            ),
+          ],
+        ),
         const LCSpacer(),
         LCWideButton(text: "SAVE", onTap: () {}),
       ], // Optional: You can customize the title
