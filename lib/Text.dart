@@ -76,3 +76,25 @@ class LCText extends StatelessWidget {
     );
   }
 }
+
+/// Small info text with adaptive text selection.
+/// Displays text in a smaller, gray font for informational purposes.
+class LCInfoText extends StatelessWidget {
+  /// Text content.
+  final String text;
+
+  /// Creates a small info text.
+  /// [text] is required for content display.
+  const LCInfoText(this.text, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return LCSelectable(
+      text: text,
+      style: const TextStyle(
+        fontSize: 12,
+        color: Colors.grey,
+      ),
+    );
+  }
+}
