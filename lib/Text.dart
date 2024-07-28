@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lc_ui/Selectable.dart';
 
+import 'Clickable.dart';
+import 'package:lc_ui/Theme.dart';
+
 /// Large header with adaptive text selection.
 /// Uses [LCSelectable] for cross-platform consistency.
 class LCHeaderLarge extends StatelessWidget {
@@ -64,15 +67,63 @@ class LCText extends StatelessWidget {
   /// Text content.
   final String text;
 
+  /// Optional style to override the default.
+  final TextStyle? style;
+
   /// Creates a regular text.
   /// [text] is required for content display.
-  const LCText(this.text, {super.key});
+  /// [style] is optional and overrides the default style if provided.
+  const LCText(this.text, {this.style, super.key});
 
   @override
   Widget build(BuildContext context) {
     return LCSelectable(
       text: text,
-      style: const TextStyle(fontSize: 14),
+      style: style ?? const TextStyle(fontSize: 14),
+    );
+  }
+}
+
+/// A clickable text link with adaptive text selection.
+/// Provides a tappable text that can trigger an action.
+class LCLink extends StatelessWidget {
+  /// The text to be displayed as a link.
+  final String text;
+
+  /// The function to be called when the link is tapped.
+  final VoidCallback onTap;
+
+  /// Optional style to override the default.
+  final TextStyle? style;
+
+  /// Creates a clickable text link.
+  /// [text] is the content to be displayed.
+  /// [onTap] is the function to be executed when the link is tapped.
+  /// [style] is optional and overrides the default style if provided.
+  const LCLink({
+    required this.text,
+    required this.onTap,
+    this.style,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final decorationColor = AppTheme.accentColor;
+    return LCClickable(
+      onTap: onTap,
+      child: Text(
+        text,
+        style: TextStyle(
+          shadows: [
+            Shadow(color: decorationColor, offset: const Offset(0, -2))
+          ],
+          color: Colors.transparent,
+          decoration: TextDecoration.underline,
+          decorationColor: decorationColor,
+          decorationThickness: 2,
+        ),
+      ),
     );
   }
 }

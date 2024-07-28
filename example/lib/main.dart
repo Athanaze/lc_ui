@@ -89,6 +89,23 @@ class MyHomePage extends StatelessWidget {
           },
           backgroundColor: Colors.white,
         ),
+        const LCSpacer(),
+        LCLink(
+          text: "This is a link",
+          onTap: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Link tapped!')),
+            );
+          },
+        ),
+        const LCSpacer(),
+        const LCText("This is a regular LCText example"),
+        const LCSpacer(),
+        const LCText(
+          "This is an LCText with custom style",
+          style: TextStyle(
+              fontSize: 18, fontWeight: FontWeight.bold, color: Colors.red),
+        ),
       ],
     );
   }
