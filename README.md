@@ -1,6 +1,7 @@
 # Simple Flutter UI kit by Liechti Consulting
 
-![2024-07-22-113922_5360x1440_scrot](https://github.com/user-attachments/assets/4694d702-08b3-4564-b937-70c01a14b6fb)
+![2024-07-28-092824_5360x1440_scrot](https://github.com/user-attachments/assets/3b672979-30f2-413a-9215-28fd14c162d7)
+
 
 
 ## Goals
