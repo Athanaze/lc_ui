@@ -6,6 +6,7 @@ import 'package:lc_ui/Text.dart';
 import 'package:lc_ui/TextButton.dart';
 import 'package:lc_ui/WideButton.dart';
 import 'package:lc_ui/lc_ui.dart';
+import 'package:lc_ui/Card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +31,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return LCApp(
       title: 'Ui kit demo',
-      actions: [Text("21342142314234")],
+      actions: const [Text("text on the right")],
       children: [
         const LCHeaderLarge("Large header title"),
         LCWideButton(text: 'Custom Button', onTap: () {}),
@@ -60,7 +61,7 @@ class MyHomePage extends StatelessWidget {
               text: "text button",
               onTap: () {},
             ),
-            LCText("LC Text content"),
+            const LCText("LC Text content"),
           ],
         ),
         const LCSpacer(),
@@ -102,7 +103,7 @@ class MyHomePage extends StatelessWidget {
         ),
         const LCSpacer(),
         Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          LCText("This is a regular LCText example"),
+          const LCText("This is a regular LCText example"),
           LCLink(
             text: "This is a link",
             onTap: () {
@@ -117,6 +118,7 @@ class MyHomePage extends StatelessWidget {
         Row(
           children: [
             LCRegularButton(
+              tooltip: "This is a tooltip",
               text: "Button",
               onTap: () {
                 showDialog(
@@ -138,13 +140,44 @@ class MyHomePage extends StatelessWidget {
                 );
               },
             ),
-            LCText(
+            const LCText(
               "This is an LCText with custom style",
               style: TextStyle(
                   fontSize: 18, fontWeight: FontWeight.bold, color: Colors.red),
             )
           ],
         ),
+        const LCSpacer(),
+        const LCHeaderMedium('Case Examples'),
+        LCCard(
+          title: 'Ongoing Case',
+          date: '2023-04-20',
+          status: CaseStatus.inProgress,
+          onTap: () {},
+        ),
+        const LCSpacer(),
+        LCCard(
+          title: 'Completed Case',
+          date: '2023-04-15',
+          status: CaseStatus.finished,
+          onTap: () {},
+          tooltip: "This is a tooltip",
+        ),
+        const LCSpacer(),
+        LCCard(
+          title: 'Case Without Status',
+          date: '2023-04-10',
+          onTap: () {},
+          tooltip: "This is a tooltip",
+        ),
+        const LCSpacer(),
+        const LCSpacer(),
+        const LCSpacer(),
+        const LCSpacer(),
+        const LCSpacer(),
+        const LCSpacer(),
+        const LCInfoText("This is a regular LCInfoText example",
+            tooltip: "This is a 24 hour case"),
       ],
     );
   }

@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class LCClickable extends StatefulWidget {
   final Widget child;
   final VoidCallback? onTap;
+  final String? tooltip;
 
   const LCClickable({
     super.key,
     required this.child,
     this.onTap,
+    this.tooltip,
   });
 
   @override
@@ -15,13 +17,9 @@ class LCClickable extends StatefulWidget {
 }
 
 class LCClickableState extends State<LCClickable> {
-  bool _isHovered = false;
-
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
+    Widget content = MouseRegion(
       cursor:
           widget.onTap != null ? SystemMouseCursors.click : MouseCursor.defer,
       child: GestureDetector(
@@ -29,5 +27,14 @@ class LCClickableState extends State<LCClickable> {
         child: widget.child,
       ),
     );
+
+    if (widget.tooltip != null) {
+      content = Tooltip(
+        message: widget.tooltip!,
+        child: content,
+      );
+    }
+
+    return content;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Clickable.dart'; // Make sure to import LCClickable
 
 /// A flatter version of IconButton without splash effect.
 class LCIconButton extends StatelessWidget {
@@ -27,29 +28,19 @@ class LCIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: const BoxConstraints(
-        minWidth: 0,
-        minHeight: 0,
-      ),
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click, // Change cursor to pointer
-        child: GestureDetector(
-          onTap: onPressed,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: tooltip != null
-                ? Tooltip(
-                    message: tooltip!,
-                    child: IconTheme(
-                      data: IconThemeData(color: color), // Apply color
-                      child: icon,
-                    ),
-                  )
-                : IconTheme(
-                    data: IconThemeData(color: color), // Apply color
-                    child: icon,
-                  ),
+    return LCClickable(
+      onTap: onPressed,
+      tooltip: tooltip,
+      child: Container(
+        constraints: const BoxConstraints(
+          minWidth: 0,
+          minHeight: 0,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: IconTheme(
+            data: IconThemeData(color: color),
+            child: icon,
           ),
         ),
       ),

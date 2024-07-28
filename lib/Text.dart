@@ -139,18 +139,29 @@ class LCInfoText extends StatelessWidget {
   /// Text content.
   final String text;
 
+  /// Optional tooltip text.
+  final String? tooltip;
+
   /// Creates a small info text.
   /// [text] is required for content display.
-  const LCInfoText(this.text, {super.key});
+  /// [tooltip] is optional and provides additional information on hover.
+  const LCInfoText(this.text, {this.tooltip, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return LCSelectable(
+    Widget infoText = LCSelectable(
       text: text,
       style: const TextStyle(
         fontSize: 12,
         color: Colors.grey,
       ),
     );
+
+    return tooltip != null
+        ? Tooltip(
+            message: tooltip!,
+            child: infoText,
+          )
+        : infoText;
   }
 }

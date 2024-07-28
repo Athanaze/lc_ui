@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Clickable.dart';
+
 Border LCButtonBorder() {
   return Border.all(color: Colors.black, width: 1);
 }
@@ -19,6 +21,7 @@ class LCBaseButton extends StatelessWidget {
   final Color textColor;
   final bool hasBorder;
   final double? width;
+  final String? tooltip;
 
   const LCBaseButton({
     required this.text,
@@ -28,44 +31,43 @@ class LCBaseButton extends StatelessWidget {
     required this.textColor,
     this.hasBorder = false,
     this.width,
+    this.tooltip,
   });
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
+    return LCClickable(
+      onTap: onTap,
+      tooltip: tooltip,
       child: Padding(
         padding: const EdgeInsets.all(ButtonStyles.padding),
-        child: GestureDetector(
-          onTap: onTap,
-          child: Container(
-            width: width,
-            padding: const EdgeInsets.symmetric(
-                vertical: ButtonStyles.padding,
-                horizontal: ButtonStyles.padding * 2),
-            decoration: BoxDecoration(
-              color: backgroundColor,
-              borderRadius: BorderRadius.circular(ButtonStyles.radius),
-              border: hasBorder ? LCButtonBorder() : null,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  text.toUpperCase(),
-                  style: TextStyle(
-                    color: textColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: ButtonStyles.fontSize,
-                  ),
-                  textAlign: TextAlign.center,
+        child: Container(
+          width: width,
+          padding: const EdgeInsets.symmetric(
+              vertical: ButtonStyles.padding,
+              horizontal: ButtonStyles.padding * 2),
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(ButtonStyles.radius),
+            border: hasBorder ? LCButtonBorder() : null,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                text.toUpperCase(),
+                style: TextStyle(
+                  color: textColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: ButtonStyles.fontSize,
                 ),
-                if (iconData != null) ...[
-                  const SizedBox(width: ButtonStyles.fontSize / 2),
-                  Icon(iconData, size: ButtonStyles.fontSize, color: textColor),
-                ],
+                textAlign: TextAlign.center,
+              ),
+              if (iconData != null) ...[
+                const SizedBox(width: ButtonStyles.fontSize / 2),
+                Icon(iconData, size: ButtonStyles.fontSize, color: textColor),
               ],
-            ),
+            ],
           ),
         ),
       ),
@@ -79,6 +81,7 @@ class LCRegularButton extends LCBaseButton {
     required super.onTap,
     super.iconData,
     super.width,
+    super.tooltip,
   }) : super(
           backgroundColor: Colors.black,
           textColor: Colors.white,

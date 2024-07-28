@@ -10,6 +10,7 @@ class _LCBaseWideButton extends StatelessWidget {
   final Color backgroundColor;
   final Color textColor;
   final bool hasBorder;
+  final String? tooltip;
 
   const _LCBaseWideButton({
     required this.text,
@@ -18,6 +19,7 @@ class _LCBaseWideButton extends StatelessWidget {
     required this.backgroundColor,
     required this.textColor,
     this.hasBorder = false,
+    this.tooltip,
   });
 
   @override
@@ -30,6 +32,7 @@ class _LCBaseWideButton extends StatelessWidget {
       textColor: textColor,
       hasBorder: hasBorder,
       width: double.infinity,
+      tooltip: tooltip,
     );
   }
 }
@@ -39,12 +42,14 @@ class LCWideButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
   final IconData? iconData;
+  final String? tooltip;
 
   const LCWideButton({
     super.key,
     required this.text,
     required this.onTap,
     this.iconData,
+    this.tooltip,
   });
 
   @override
@@ -55,6 +60,7 @@ class LCWideButton extends StatelessWidget {
       iconData: iconData,
       backgroundColor: Colors.black,
       textColor: Colors.white,
+      tooltip: tooltip,
     );
   }
 }
@@ -64,12 +70,14 @@ class LCSecondaryWideButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
   final IconData? iconData;
+  final String? tooltip;
 
   const LCSecondaryWideButton({
     super.key,
     required this.text,
     required this.onTap,
     this.iconData,
+    this.tooltip,
   });
 
   @override
@@ -81,6 +89,7 @@ class LCSecondaryWideButton extends StatelessWidget {
       backgroundColor: Colors.white,
       textColor: Colors.black,
       hasBorder: true,
+      tooltip: tooltip,
     );
   }
 }

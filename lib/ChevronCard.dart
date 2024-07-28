@@ -7,6 +7,7 @@ class LCChevronCard extends StatelessWidget {
   final String subtitle;
   final VoidCallback onTap;
   final Color? backgroundColor;
+  final String? tooltip;
 
   const LCChevronCard({
     super.key,
@@ -14,12 +15,14 @@ class LCChevronCard extends StatelessWidget {
     required this.subtitle,
     required this.onTap,
     this.backgroundColor,
+    this.tooltip,
   });
 
   @override
   Widget build(BuildContext context) {
     return LCClickable(
       onTap: onTap,
+      tooltip: tooltip,
       child: Container(
         color: backgroundColor,
         child: Column(
