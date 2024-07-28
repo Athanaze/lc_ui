@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lc_ui/Button.dart';
 import 'package:lc_ui/ChevronCard.dart';
 import 'package:lc_ui/IconButton.dart';
 import 'package:lc_ui/Text.dart';
 import 'package:lc_ui/TextButton.dart';
+import 'package:lc_ui/WideButton.dart';
 import 'package:lc_ui/lc_ui.dart';
 
 void main() {
@@ -112,10 +114,36 @@ class MyHomePage extends StatelessWidget {
         ]),
         const LCText("This is a regular LCText example"),
         const LCSpacer(),
-        const LCText(
-          "This is an LCText with custom style",
-          style: TextStyle(
-              fontSize: 18, fontWeight: FontWeight.bold, color: Colors.red),
+        Row(
+          children: [
+            LCRegularButton(
+              text: "Button",
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return LCDialog(
+                      title: "Dialog Title",
+                      cancelText: "Cancel",
+                      submitText: "Submit",
+                      onCancel: () => Navigator.of(context).pop(),
+                      onSubmit: () {
+                        Navigator.of(context).pop();
+                      },
+                      children: const [
+                        LCText("This is the dialog content."),
+                      ],
+                    );
+                  },
+                );
+              },
+            ),
+            LCText(
+              "This is an LCText with custom style",
+              style: TextStyle(
+                  fontSize: 18, fontWeight: FontWeight.bold, color: Colors.red),
+            )
+          ],
         ),
       ],
     );

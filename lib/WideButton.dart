@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lc_ui/ButtonBorder.dart';
 
-/// Defines common styles for buttons
-class ButtonStyles {
-  static const padding = 16.0;
-  static const radius = 8.0;
-  static const fontSize = 16.0;
-}
+import 'Button.dart';
 
 /// Base class for wide buttons
 class _LCBaseWideButton extends StatelessWidget {
@@ -28,41 +22,14 @@ class _LCBaseWideButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: Padding(
-        padding: const EdgeInsets.all(ButtonStyles.padding),
-        child: GestureDetector(
-          onTap: onTap,
-          child: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(vertical: ButtonStyles.padding),
-            decoration: BoxDecoration(
-              color: backgroundColor,
-              borderRadius: BorderRadius.circular(ButtonStyles.radius),
-              border: hasBorder ? LCButtonBorder() : null,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  text.toUpperCase(),
-                  style: TextStyle(
-                    color: textColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: ButtonStyles.fontSize,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                if (iconData != null) ...[
-                  const SizedBox(width: ButtonStyles.fontSize / 2),
-                  Icon(iconData, size: ButtonStyles.fontSize, color: textColor),
-                ],
-              ],
-            ),
-          ),
-        ),
-      ),
+    return LCBaseButton(
+      text: text,
+      onTap: onTap,
+      iconData: iconData,
+      backgroundColor: backgroundColor,
+      textColor: textColor,
+      hasBorder: hasBorder,
+      width: double.infinity,
     );
   }
 }

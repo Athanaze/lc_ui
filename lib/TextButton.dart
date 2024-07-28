@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lc_ui/ButtonBorder.dart';
+import 'package:lc_ui/Button.dart';
 import 'package:lc_ui/Theme.dart';
 
 /// A customizable text button with optional border and hover effect.
@@ -41,7 +41,7 @@ class _LCTextButtonState extends State<LCTextButton> {
             constraints: const BoxConstraints(minWidth: 100),
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(ButtonStyles.radius),
               border: widget.border ? LCButtonBorder() : null,
             ),
             child: Text(
