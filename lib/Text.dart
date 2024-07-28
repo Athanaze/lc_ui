@@ -109,19 +109,24 @@ class LCLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double underlineY = 2.0;
     final decorationColor = AppTheme.accentColor;
     return LCClickable(
       onTap: onTap,
-      child: Text(
-        text,
-        style: TextStyle(
-          shadows: [
-            Shadow(color: decorationColor, offset: const Offset(0, -2))
-          ],
-          color: Colors.transparent,
-          decoration: TextDecoration.underline,
-          decorationColor: decorationColor,
-          decorationThickness: 2,
+      child: Transform.translate(
+        offset: const Offset(0, underlineY),
+        child: Text(
+          text,
+          style: TextStyle(
+            shadows: [
+              Shadow(
+                  color: decorationColor, offset: const Offset(0, -underlineY))
+            ],
+            color: Colors.transparent,
+            decoration: TextDecoration.underline,
+            decorationColor: decorationColor,
+            decorationThickness: 2,
+          ),
         ),
       ),
     );

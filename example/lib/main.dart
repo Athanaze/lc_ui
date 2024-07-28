@@ -99,6 +99,17 @@ class MyHomePage extends StatelessWidget {
           },
         ),
         const LCSpacer(),
+        Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          LCText("This is a regular LCText example"),
+          LCLink(
+            text: "This is a link",
+            onTap: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Link tapped!')),
+              );
+            },
+          ),
+        ]),
         const LCText("This is a regular LCText example"),
         const LCSpacer(),
         const LCText(
