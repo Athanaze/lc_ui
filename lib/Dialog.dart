@@ -32,7 +32,7 @@ class LCDialog extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: LCheaderMedium(title),
+            child: LCHeaderMedium(title),
           ),
           Positioned(
             right: 8,

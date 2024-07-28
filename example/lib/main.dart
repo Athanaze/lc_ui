@@ -37,7 +37,7 @@ class MyHomePage extends StatelessWidget {
         const LCSpacer(),
         LCSecondaryWideButton(onTap: () {}, text: 'Custom Button'),
         const LCSpacer(),
-        const LCheaderMedium('Buddy'),
+        const LCHeaderMedium('Buddy'),
         const LCTextField(
           hintText: "John Doe",
           autofocus: true,

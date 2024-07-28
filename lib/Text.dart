@@ -25,13 +25,13 @@ class LCHeaderLarge extends StatelessWidget {
 
 /// Medium header with adaptive text selection.
 /// Ensures consistent appearance across platforms.
-class LCheaderMedium extends StatelessWidget {
+class LCHeaderMedium extends StatelessWidget {
   /// Header text content.
   final String text;
 
   /// Creates a medium header.
   /// [text] is required for content display.
-  const LCheaderMedium(this.text, {super.key});
+  const LCHeaderMedium(this.text, {super.key});
 
   @override
   Widget build(BuildContext context) {
