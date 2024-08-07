@@ -39,15 +39,25 @@ class MyHomePage extends StatelessWidget {
         LCSecondaryWideButton(onTap: () {}, text: 'Custom Button'),
         const LCSpacer(),
         const LCHeaderMedium('Buddy'),
-        const LCTextField(
+        LCTextField(
           hintText: "John Doe",
           autofocus: true,
         ),
-        const LCTextField(
+        LCTextField(
           hintText: "Email address",
+          errorMessage: "Please enter a valid email address",
+          validator: (value) {
+            print(
+                "value: $value, contains @: ${value.contains("@")}, contains .: ${value.contains(".")}");
+            return (value.contains("@") && value.contains("."));
+          },
         ),
-        const LCTextField(
+        LCTextField(
           hintText: "Phone number",
+          errorMessage: "Phone number must be 10 digits",
+          validator: (value) {
+            return !(value.isEmpty);
+          },
         ),
         Row(
           children: [
