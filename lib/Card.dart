@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lc_ui/Text.dart';
 
 import 'Clickable.dart';
+import 'lc_ui.dart';
 
 enum CaseStatus {
   inProgress,
@@ -15,6 +16,7 @@ class LCCard extends StatelessWidget {
   final CaseStatus? status;
   final VoidCallback onTap;
   final String? tooltip;
+  final Widget? content; // New optional content parameter
 
   const LCCard({
     Key? key,
@@ -23,6 +25,7 @@ class LCCard extends StatelessWidget {
     this.status,
     required this.onTap,
     this.tooltip,
+    this.content, // Add content to the constructor
   }) : super(key: key);
 
   Color _getStatusColor(CaseStatus status) {
@@ -81,9 +84,97 @@ class LCCard extends StatelessWidget {
                   ),
                 ),
               ],
+              if (content != null) ...[
+                const SizedBox(height: 8),
+                content!, // Add the optional content widget
+              ],
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class LCTestimonialCard extends StatelessWidget {
+  final String? title;
+  final String testimonial;
+  final String authorName;
+  final String? authorTitle;
+  final String date;
+  final VoidCallback? onTap;
+  final String? tooltip;
+  final String? avatarUrl;
+  final Widget? additionalContent;
+  final TextStyle? testimonialStyle;
+  final TextStyle? authorStyle;
+
+  const LCTestimonialCard({
+    super.key,
+    this.title,
+    required this.testimonial,
+    required this.authorName,
+    this.authorTitle,
+    required this.date,
+    this.onTap,
+    this.tooltip,
+    this.avatarUrl,
+    this.additionalContent,
+    this.testimonialStyle,
+    this.authorStyle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return LCCard(
+      title: title ?? '',
+      date: date,
+      onTap: onTap ?? () {},
+      tooltip: tooltip,
+      content: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          LCHeaderSmall(testimonial),
+          const LCSpacer(),
+          Row(
+            children: [
+              if (avatarUrl != null) ...[
+                CircleAvatar(
+                  backgroundImage: NetworkImage(avatarUrl!),
+                  radius: 24,
+                ),
+                const SizedBox(width: 12),
+              ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      authorName,
+                      style: authorStyle ??
+                          const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
+                    ),
+                    if (authorTitle != null)
+                      Text(
+                        authorTitle!,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          if (additionalContent != null) ...[
+            const SizedBox(height: 16),
+            additionalContent!,
+          ],
+        ],
       ),
     );
   }

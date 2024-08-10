@@ -181,13 +181,49 @@ class MyHomePage extends StatelessWidget {
           tooltip: "This is a tooltip",
         ),
         const LCSpacer(),
-        const LCSpacer(),
-        const LCSpacer(),
-        const LCSpacer(),
-        const LCSpacer(),
-        const LCSpacer(),
-        const LCInfoText("This is a regular LCInfoText example",
-            tooltip: "This is a 24 hour case"),
+        LCCarousel(
+          height: 200,
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          onPageChanged: (index) => {
+            //print('Page changed to $index')
+          },
+          cards: [
+            LCCard(
+                title: 'Padded 1',
+                date: '2023-05-01',
+                onTap: () {},
+                content: const LCText("This is a padded card")),
+            LCCard(title: 'Padded 2', date: '2023-05-02', onTap: () {}),
+            LCCard(title: 'Padded 3', date: '2023-05-03', onTap: () {}),
+          ],
+        ),
+        const LCCarousel(
+          cards: [
+            LCTestimonialCard(
+              testimonial: "This product has revolutionized our workflow!",
+              authorName: "John Doe",
+              authorTitle: "CEO, Tech Innovators",
+              date: "2023-05-15",
+              avatarUrl: "https://i.imgur.com/jiJL6ZH.png",
+            ),
+            LCTestimonialCard(
+              testimonial:
+                  "The customer support is top-notch. Highly recommended!",
+              authorName: "Jane Smith",
+              authorTitle: "CTO, Digital Solutions",
+              date: "2023-05-10",
+              avatarUrl: "https://i.imgur.com/PyeUwrD.png",
+            ),
+            LCTestimonialCard(
+              testimonial:
+                  "We've seen a 50% increase in productivity since implementing this solution.",
+              authorName: "Mike Johnson",
+              authorTitle: "Operations Manager, Global Corp",
+              date: "2023-05-05",
+              avatarUrl: "https://i.imgur.com/jiJL6ZH.png",
+            ),
+          ],
+        ),
       ],
     );
   }
