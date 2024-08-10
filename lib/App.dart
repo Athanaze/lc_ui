@@ -18,6 +18,7 @@ class LCApp extends StatelessWidget {
   final Color? barBackgroundColor;
   final Color? barIconColor;
   final Color? barTitleColor;
+  final Color? backgroundColor;
 
   const LCApp({
     super.key,
@@ -31,11 +32,13 @@ class LCApp extends StatelessWidget {
     this.barBackgroundColor,
     this.barIconColor,
     this.barTitleColor,
+    this.backgroundColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: LCBar(
         title: title,
         backIcon: backIcon,
