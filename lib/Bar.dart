@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lc_ui/IconButton.dart';
+import 'package:lc_ui/Selectable.dart';
 
 class LCBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -31,8 +32,8 @@ class LCBar extends StatelessWidget implements PreferredSizeWidget {
         onPressed: onBackPressed ?? () => Navigator.of(context).pop(),
         color: iconColor ?? Colors.white,
       ),
-      title: Text(
-        title.toUpperCase(),
+      title: LCSelectable(
+        text: title.toUpperCase(),
         style: TextStyle(color: titleColor ?? Colors.white),
       ),
       actions: actions,

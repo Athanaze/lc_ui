@@ -94,7 +94,9 @@ class LCTextFieldState extends State<LCTextField> {
               widget.errorMessage!,
               style: const TextStyle(color: Colors.red),
             ),
-          ),
+          )
+        else
+          const SizedBox(height: 2.0),
       ],
     );
   }
