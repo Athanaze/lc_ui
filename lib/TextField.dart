@@ -87,16 +87,15 @@ class LCTextFieldState extends State<LCTextField> {
                 : null,
           ),
         ),
-        if (_showError && widget.errorMessage != null)
-          Padding(
-            padding: const EdgeInsets.only(top: 2.0),
-            child: Text(
-              widget.errorMessage!,
-              style: const TextStyle(color: Colors.red),
-            ),
-          )
-        else
-          const SizedBox(height: 2.0),
+        Padding(
+          padding: const EdgeInsets.only(top: 2.0),
+          child: Text(
+            _showError && widget.errorMessage != null
+                ? widget.errorMessage!
+                : "",
+            style: const TextStyle(color: Colors.red),
+          ),
+        )
       ],
     );
   }
