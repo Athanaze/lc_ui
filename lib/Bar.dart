@@ -6,23 +6,35 @@ class LCBar extends StatelessWidget implements PreferredSizeWidget {
   final Icon? backIcon;
   final VoidCallback? onBackPressed;
   final List<Widget>? actions;
+  final Color? backgroundColor;
+  final Color? iconColor;
+  final Color? titleColor;
 
-  const LCBar(
-      {super.key,
-      required this.title,
-      this.backIcon,
-      this.onBackPressed,
-      this.actions});
+  const LCBar({
+    super.key,
+    required this.title,
+    this.backIcon,
+    this.onBackPressed,
+    this.actions,
+    this.backgroundColor,
+    this.iconColor,
+    this.titleColor,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return AppBar(
+      backgroundColor: backgroundColor ?? theme.primaryColor,
       leading: LCIconButton(
-          icon: backIcon ?? const Icon(Icons.arrow_back),
-          onPressed: onBackPressed ?? () => Navigator.of(context).pop(),
-          color: Colors.white),
-      title: Text(title.toUpperCase(),
-          style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+        icon: backIcon ?? const Icon(Icons.arrow_back),
+        onPressed: onBackPressed ?? () => Navigator.of(context).pop(),
+        color: iconColor ?? Colors.white,
+      ),
+      title: Text(
+        title.toUpperCase(),
+        style: TextStyle(color: titleColor ?? Colors.white),
+      ),
       actions: actions,
     );
   }
