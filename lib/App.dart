@@ -15,9 +15,9 @@ class LCApp extends StatelessWidget {
   final Icon? backIcon;
   final Function()? onBackPressed;
   final List<Widget>? actions;
-  final Color? backgroundColor;
-  final Color? iconColor;
-  final Color? titleColor;
+  final Color? barBackgroundColor;
+  final Color? barIconColor;
+  final Color? barTitleColor;
 
   const LCApp({
     super.key,
@@ -28,9 +28,9 @@ class LCApp extends StatelessWidget {
     this.backIcon,
     this.onBackPressed,
     this.actions,
-    this.backgroundColor,
-    this.iconColor,
-    this.titleColor,
+    this.barBackgroundColor,
+    this.barIconColor,
+    this.barTitleColor,
   });
 
   @override
@@ -41,9 +41,9 @@ class LCApp extends StatelessWidget {
         backIcon: backIcon,
         onBackPressed: onBackPressed,
         actions: actions,
-        backgroundColor: backgroundColor,
-        iconColor: iconColor,
-        titleColor: titleColor,
+        backgroundColor: barBackgroundColor,
+        iconColor: barIconColor,
+        titleColor: barTitleColor,
       ),
       body: Center(
         child: ConstrainedBox(
