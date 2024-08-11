@@ -8,6 +8,8 @@ class LCTextField extends StatefulWidget {
   final bool? autofocus;
   final String? errorMessage;
   final bool Function(String)? validator;
+  final TextInputAction? textInputAction;
+  final ValueChanged<String>? onSubmitted;
 
   const LCTextField({
     super.key,
@@ -18,6 +20,8 @@ class LCTextField extends StatefulWidget {
     this.autofocus,
     this.errorMessage,
     this.validator,
+    this.textInputAction,
+    this.onSubmitted,
   });
 
   @override
@@ -67,6 +71,8 @@ class LCTextFieldState extends State<LCTextField> {
           },
           autofocus: widget.autofocus ?? false,
           focusNode: _focusNode,
+          textInputAction: widget.textInputAction,
+          onSubmitted: widget.onSubmitted,
           decoration: InputDecoration(
             hintText: widget.hintText,
             hintStyle: const TextStyle(

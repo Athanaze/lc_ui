@@ -12,7 +12,7 @@ enum CaseStatus {
 
 class LCCard extends StatelessWidget {
   final String title;
-  final String date;
+  final String? date;
   final CaseStatus? status;
   final VoidCallback onTap;
   final String? tooltip;
@@ -68,7 +68,7 @@ class LCCard extends StatelessWidget {
             children: [
               LCHeaderMedium(title),
               const SizedBox(height: 4),
-              LCInfoText(date),
+              if (date != null) LCInfoText(date!),
               if (status != null) ...[
                 const SizedBox(height: 8),
                 Container(
