@@ -167,7 +167,7 @@ class MyHomePage extends StatelessWidget {
         ),
         const LCSpacer(),
         LCCard(
-          title: 'Completed Case with Close Button',
+          title: 'Completed Case with Close Button Quelles sont les caractéristiques essentiel  lesa que vous recherchez dans une colocation (budget, quartier, type de logement, etc.)?',
           date: '2023-04-15',
           status: CaseStatus.finished,
           onTap: () {},

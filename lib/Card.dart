@@ -68,7 +68,7 @@ class LCCard extends StatelessWidget {
         child: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: EdgeInsets.all(16).copyWith(right: showCloseButton ? 40 : 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -99,14 +99,16 @@ class LCCard extends StatelessWidget {
             ),
             if (showCloseButton)
               Positioned(
-                top: 8,
-                right: 8,
+                top: 0,
+                right: 0,
                 child: GestureDetector(
                   onTap: onClose,
                   behavior: HitTestBehavior.opaque,
-                  child: const Padding(
-                    padding: EdgeInsets.all(4),
-                    child: Text(
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    alignment: Alignment.center,
+                    child: const Text(
                       '×',
                       style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
