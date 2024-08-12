@@ -167,11 +167,17 @@ class MyHomePage extends StatelessWidget {
         ),
         const LCSpacer(),
         LCCard(
-          title: 'Completed Case',
+          title: 'Completed Case with Close Button',
           date: '2023-04-15',
           status: CaseStatus.finished,
           onTap: () {},
           tooltip: "This is a tooltip",
+          showCloseButton: true,
+          onClose: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Close button pressed!')),
+            );
+          },
         ),
         const LCSpacer(),
         LCCard(

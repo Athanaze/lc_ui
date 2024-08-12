@@ -17,6 +17,8 @@ class LCCard extends StatelessWidget {
   final VoidCallback onTap;
   final String? tooltip;
   final Widget? content; // New optional content parameter
+  final bool showCloseButton; // New parameter
+  final VoidCallback? onClose; // New parameter
 
   const LCCard({
     Key? key,
@@ -26,6 +28,8 @@ class LCCard extends StatelessWidget {
     required this.onTap,
     this.tooltip,
     this.content, // Add content to the constructor
+    this.showCloseButton = false, // Default to false
+    this.onClose,
   }) : super(key: key);
 
   Color _getStatusColor(CaseStatus status) {
@@ -61,35 +65,55 @@ class LCCard extends StatelessWidget {
         color: Colors.white,
         elevation: 2,
         margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              LCHeaderMedium(title),
-              const SizedBox(height: 4),
-              if (date != null) LCInfoText(date!),
-              if (status != null) ...[
-                const SizedBox(height: 8),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: _getStatusColor(status!),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    _getStatusText(status!),
-                    style: const TextStyle(color: Colors.white, fontSize: 12),
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  LCHeaderMedium(title),
+                  const SizedBox(height: 4),
+                  if (date != null) LCInfoText(date!),
+                  if (status != null) ...[
+                    const SizedBox(height: 8),
+                    Container(
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: _getStatusColor(status!),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Text(
+                        _getStatusText(status!),
+                        style: const TextStyle(color: Colors.white, fontSize: 12),
+                      ),
+                    ),
+                  ],
+                  if (content != null) ...[
+                    const SizedBox(height: 8),
+                    content!, // Add the optional content widget
+                  ],
+                ],
+              ),
+            ),
+            if (showCloseButton)
+              Positioned(
+                top: 8,
+                right: 8,
+                child: GestureDetector(
+                  onTap: onClose,
+                  behavior: HitTestBehavior.opaque,
+                  child: const Padding(
+                    padding: EdgeInsets.all(4),
+                    child: Text(
+                      '×',
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
-              ],
-              if (content != null) ...[
-                const SizedBox(height: 8),
-                content!, // Add the optional content widget
-              ],
-            ],
-          ),
+              ),
+          ],
         ),
       ),
     );
