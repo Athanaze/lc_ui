@@ -19,6 +19,7 @@ class LCCard extends StatelessWidget {
   final Widget? content; // New optional content parameter
   final bool showCloseButton; // New parameter
   final VoidCallback? onClose; // New parameter
+  final bool enableTooltip; // New parameter
 
   const LCCard({
     Key? key,
@@ -30,6 +31,7 @@ class LCCard extends StatelessWidget {
     this.content, // Add content to the constructor
     this.showCloseButton = false, // Default to false
     this.onClose,
+    this.enableTooltip = true, // Default to true
   }) : super(key: key);
 
   Color _getStatusColor(CaseStatus status) {
@@ -59,7 +61,7 @@ class LCCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LCClickable(
-      tooltip: tooltip ?? title,
+      tooltip: enableTooltip ? (tooltip ?? title) : null,
       onTap: onTap,
       child: Card(
         color: Colors.white,
@@ -134,6 +136,7 @@ class LCTestimonialCard extends StatelessWidget {
   final Widget? additionalContent;
   final TextStyle? testimonialStyle;
   final TextStyle? authorStyle;
+  final bool enableTooltip;
 
   const LCTestimonialCard({
     super.key,
@@ -148,6 +151,7 @@ class LCTestimonialCard extends StatelessWidget {
     this.additionalContent,
     this.testimonialStyle,
     this.authorStyle,
+    this.enableTooltip = true, // Default to true
   });
 
   @override
@@ -157,6 +161,7 @@ class LCTestimonialCard extends StatelessWidget {
       date: date,
       onTap: onTap ?? () {},
       tooltip: tooltip,
+      enableTooltip: enableTooltip,
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
